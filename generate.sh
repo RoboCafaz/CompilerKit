@@ -14,6 +14,10 @@ generate() {
     rm $1.bak
 }
 
+install() {
+
+}
+
 # Ask for the class name in camel case, and export all class name variations for generate()
 get_identifier() {
     echo -n "Enter the $choice name in CamelCase (e.g., ClassName): "
@@ -51,6 +55,8 @@ usage() {
     echo ""
     echo "Where COMMAND is one of the following:"
     echo ""
+	echo "install		Installs required compilerkit dependencies"
+	echo ""
     echo "build         Builds CompilerKit library, binaries and documentation."
     echo "rebuild       Removes the existing binaries and rebuilds CompilerKit."
     echo "clean         Removes the existing binaries."
@@ -171,7 +177,10 @@ main() {
         git shortlog --no-merges -s -n --since="(7days)"
     elif [ $1 = "mergestats" ]; then
         git shortlog --merges -s -n --since="(7days)"
-    fi
+    elif [ $1 = "install" ]; then
+		install
+	fi
+	
 }
 
 main $*
