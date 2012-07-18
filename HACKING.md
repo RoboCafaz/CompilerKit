@@ -6,9 +6,9 @@ Hacking CompilerKit
 ## Getting started
 1. Install the dependencies (Git, CMake, Doxygen, GLib, GObject, C compiler) for your platform.
 
-    - [Windows](#what-to-install-on-windows)
-    - [Linux](#what-to-install-on-linux)
-    - [Mac](#what-to-install-on-mac)
+   - [Windows](#what-to-install-on-windows)
+   - [Linux](#what-to-install-on-linux)
+   - [Mac](#what-to-install-on-mac)
 
 2. [Fork the project here.](https://github.com/lawrancej/CompilerKit/fork)
 
@@ -22,7 +22,9 @@ Hacking CompilerKit
 
 4. [Build CompilerKit.](#how-do-i-build-compilerkit)
 
-        ./build.sh build
+        ./generate.sh build # Builds tests only
+        ./generate.sh build -DBUILD_EXAMPLES # Builds all examples
+        ./generate.sh build -DBUILD_SCANNER_DEMO # Builds the scanner demo only
 
 5. [Read Documentation.](#where-is-the-documentation)
 
@@ -78,6 +80,11 @@ Did you see `command not found` after typing these into Git Bash? You should not
 5. Double click `DontShowUI`. Enter `1` for value data. Click OK.
 6. Exit `regedit`
 
+### How do I build using MSYS?
+If you installed MSYS, do the following to build all the examples:
+
+    ./generate.sh build -G '"MSYS Makefiles"' -DBUILD_EXAMPLES=ON
+
 ## What to install on Linux
 In the terminal, paste this in for your distribution:
 
@@ -131,19 +138,19 @@ Follow these steps to fix the error:
 ## How do I build CompilerKit?
 Easy! Type this in:
 
-    ./build.sh build
+    ./generate.sh build
 
 If you get build errors that you know shouldn't be there, try rebuild:
 
-    ./build.sh rebuild
+    ./generate.sh rebuild
 
 To run the test suite, type:
 
-    ./build.sh test
+    ./generate.sh test
 
 To get a coverage report (assumes `lcov` is installed):
 
-    ./build.sh coverage
+    ./generate.sh coverage
 
 ## Where is the documentation?
 [CompilerKit uses Doxygen](#what-is-doxygen) to generate documentation. After building CompilerKit, look at `docs/html/index.html`.
